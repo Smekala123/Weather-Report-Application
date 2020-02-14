@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"/>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"/>
+</head>
+
+<body>
+	<div class="jumbotron text-center color:blue">
+	  <h1>Weather Forecast Report</h1>
+	  <p>The Current Date : <span th:text="${time}"/></p> 
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+	            <th colspan="2">City</th>
+	            <th colspan="2" align="right">Temperature</th>
+	            <th colspan="2" align="right">Humidity</th>
+	            <th colspan="2" align="right">WindSpeed</th>
+	        </tr>
+		</thead>
+	    <tbody>
+	    	<tr th:if="${places.empty}">
+	            <td colspan="2"> No Weather Data Available </td>
+	        </tr>
+	        
+	        <tr th:each="place : ${places}">
+	            <td colspan="2"><span th:text="${place.placeName}"/></td>
+	            <td colspan="2"><span th:text="${place.temperature} + '°F'"/></td>
+	            <td colspan="2"><span th:text="${place.humidity}"/></td>
+	            <td colspan="2"><span th:text="${place.windSpeed} + ' ' + mph"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+</body>
+</html>
